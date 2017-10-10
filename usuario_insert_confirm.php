@@ -41,7 +41,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     // Caso o usuário seja administrador valida a variável 'administrador'
     $administrador = (estaAutorizado(TRUE)) ?
-        filter_input(INPUT_POST, 'administrador', FILTER_VALIDATE_BOOLEAN) : 0;
+        $_POST['administrador'] == 'on' ? 1 : 0 : 0;
 
     // Insere dados no banco
     if($email != false && $senha != false) {
