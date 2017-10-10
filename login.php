@@ -23,14 +23,16 @@ if(isset($_POST['email']) && isset($_POST['senha'])){
     <head>
         <meta charset="utf-8" />
         <title>Login</title>
+        <link href="assets/css/login.css" rel="stylesheet" />
     </head>
     <body>
         <form action="login.php" method="post">
-            <label>E-Mail:</label>
-            <input type="text" name="email" />
-            <label>Senha</label>
-            <input type="password" name="senha" />
-            <input type="submit" value="Entrar" />
+            <h1>ETEC Forum - Login</h1>
+            <label class="form-control">E-Mail:</label>
+            <input class="form-control" type="text" name="email" />
+            <label class="form-control">Senha</label>
+            <input class="form-control" type="password" name="senha" />
+            <input class="form-button" type="submit" value="Entrar" />
         </form>
         <!-- Lista as mensagens para esta página caso existam -->
         <div id="mensagens">

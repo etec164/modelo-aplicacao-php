@@ -9,28 +9,19 @@ require_once 'includes/mensagem.php';
     <head>
         <meta charset="utf-8" />
         <title>Modelo de Aplicação</title>
+        <link href="assets/css/default.css" rel="stylesheet" />
     </head>
     <body>
-        <h1>Exemplo de Aplicação</h1>
-        <ul>
-            <li>
-                <?php if(estaAutorizado()): ?>
-                <a href="logout.php">Logout (<?= $_SESSION['usuario_email'] ?>)</a>
-                <?php else: ?>
-                <a href="login.php">Login</a>
-                <?php endif; ?>
-            </li>
-            <li><a href="usuario_insert.php">Registrar Usuário</a></li>
-            <?php if(estaAutorizado(true)): ?>
-            <li><a href="usuarios.php">Lista de Usuários</a></li>
-            <?php endif; ?>
-        </ul>
-        <div id="mensagens">
-            <ul>
-                <?php while($msg = obterMensagem(basename(__FILE__))): ?>
-                <li><?= $msg['mensagem'] ?></li>
-                <?php endwhile ?>
-            </ul>
+        <?php require_once 'assets/layout/header.php' ?>
+        <div id="container">
+            <div id="mensagens">
+                <ul>
+                    <?php while($msg = obterMensagem(basename(__FILE__))): ?>
+                    <li><?= $msg['mensagem'] ?></li>
+                    <?php endwhile ?>
+                </ul>
+            </div>
         </div>
+        <?php require_once 'assets/layout/footer.php' ?>
     </body>
 </html>

@@ -32,26 +32,32 @@ $usuario = $comando->fetch(\PDO::FETCH_ASSOC);
     <head>
         <meta charset="utf-8" />
         <title>Excluir Usuário</title>
+        <link href="assets/css/default.css" rel="stylesheet" />
     </head>
     <body>
-        <h1>Excluir Usuário</h1>
-        <p>Deseja remover o usuário "<?= $usuario['email'] ?>" ?</p>
-        <!-- Cria o formulário  -->
-        <form action="usuario_delete_confirm.php" method="post">
-            <!-- Passa o id do usuário através de um campo oculto -->
-            <input type="hidden" name="id" value="<?= $usuario['id'] ?>" />
-            <input type="submit" value="Excluir" />
-        </form>
-        <!-- Lista as mensagens para esta página caso existam -->
-        <div id="mensagens">
-            <ul>
-                <!-- Utiliza a função 'obterMensagem' [mensagem.php] passando como parâmetro
-                     o nome do arquivo atual através da função 'basename(__FILE__)', para
-                     ler as mensagens caso existam. -->
-                <?php while($msg = obterMensagem(basename(__FILE__))): ?>
-                <li><?= $msg['mensagem'] ?></li>
-                <?php endwhile ?>
-            </ul>
+        <?php require_once 'assets/layout/header.php' ?>
+        <div id="container">
+            <h1>Excluir Usuário</h1>
+            <p>Deseja remover o usuário "<?= $usuario['email'] ?>" ?</p>
+            <!-- Cria o formulário  -->
+            <form action="usuario_delete_confirm.php" method="post">
+                <!-- Passa o id do usuário através de um campo oculto -->
+                <input type="hidden" name="id" value="<?= $usuario['id'] ?>" />
+                <input type="submit" value="Excluir" />
+            </form>
+            <!-- Lista as mensagens para esta página caso existam -->
+            <div id="mensagens">
+                <ul>
+                    <!-- Utiliza a função 'obterMensagem' [mensagem.php] passando como parâmetro
+                        o nome do arquivo atual através da função 'basename(__FILE__)', para
+                        ler as mensagens caso existam. -->
+                    <?php while($msg = obterMensagem(basename(__FILE__))): ?>
+                    <li><?= $msg['mensagem'] ?></li>
+                    <?php endwhile ?>
+                </ul>
+            </div>
+            </div>
         </div>
+        <?php require_once 'assets/layout/footer.php' ?>
     </body>
 </html>

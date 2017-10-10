@@ -26,39 +26,43 @@ $usuarios = $comando->fetchAll(\PDO::FETCH_ASSOC);
     <head>
         <meta charset="utf-8" />
         <title>Usuários</title>
+        <link href="assets/css/default.css" rel="stylesheet" />
     </head>
     <body>
-        <h1>Usuários</h1>
-        <a href="usuario_insert.php">Novo Usuario</a>
-        <table>
-            <tr>
-                <th>Id</th>
-                <th>E-Mail</th>
-                <th>Administrador</th>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
-            </tr>
-            <?php foreach($usuarios as $u): ?>
-            <tr>
-                <td><?= $u['id'] ?></td>
-                <td><?= $u['email'] ?></td>
-                <td><?= $u['administrador'] ? 'SIM' : 'NÃO' ?></td>
-                <td><a href="usuario_update.php?id=<?= $u['id'] ?>">Editar</a></td>
-                <td><a href="usuario_delete.php?id=<?= $u['id'] ?>">Remover</a></td>
-                <td></td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <!-- Lista as mensagens para esta página caso existam -->
-        <div id="mensagens">
-            <ul>
-                <!-- Utiliza a função 'obterMensagem' [mensagem.php] passando como parâmetro
-                    o nome do arquivo atual através da função 'basename(__FILE__)', para
-                    ler as mensagens caso existam. -->
-                <?php while($msg = obterMensagem(basename(__FILE__))): ?>
-                <li><?= $msg['mensagem'] ?></li>
-                <?php endwhile ?>
-            </ul>
+        <?php require_once 'assets/layout/header.php' ?>
+        <div id="container">
+            <h1>Usuários</h1>
+            <a href="usuario_insert.php">Novo Usuario</a>
+            <table class="table">
+                <tr>
+                    <th>Id</th>
+                    <th>E-Mail</th>
+                    <th>Administrador</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                </tr>
+                <?php foreach($usuarios as $u): ?>
+                <tr>
+                    <td class="center"><?= $u['id'] ?></td>
+                    <td><?= $u['email'] ?></td>
+                    <td class="center"><?= $u['administrador'] ? 'SIM' : 'NÃO' ?></td>
+                    <td class="center"><a href="usuario_update.php?id=<?= $u['id'] ?>">Editar</a></td>
+                    <td class="center"><a href="usuario_delete.php?id=<?= $u['id'] ?>">Remover</a></td>
+                </tr>
+                <?php endforeach; ?>
+            </table>
+            <!-- Lista as mensagens para esta página caso existam -->
+            <div id="mensagens">
+                <ul>
+                    <!-- Utiliza a função 'obterMensagem' [mensagem.php] passando como parâmetro
+                        o nome do arquivo atual através da função 'basename(__FILE__)', para
+                        ler as mensagens caso existam. -->
+                    <?php while($msg = obterMensagem(basename(__FILE__))): ?>
+                    <li><?= $msg['mensagem'] ?></li>
+                    <?php endwhile ?>
+                </ul>
+            </div>
         </div>
+        <?php require_once 'assets/layout/footer.php' ?>
     </body>
 </html>
